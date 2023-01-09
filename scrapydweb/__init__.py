@@ -102,6 +102,9 @@ def create_app(test_config=None):
     compress.init_app(app)
 
     app.logger.setLevel(logging.DEBUG)
+    with app.app_context():
+        db.create_all()
+
     return app
 
 
